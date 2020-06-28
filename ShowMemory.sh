@@ -10,12 +10,12 @@
 # *  (*) Do Not Use My/Our Contribution(s) To Kill/Harm/Violate(or Steal-from)(Any) Human/Community,Earth,etc.
 # *  (*) GNU General Public License v3 (GPL v3) https://www.GNU.org/licenses/gpl-3.0.en.html 
 # *
-# * ShowMemory.sh v0.57
+# * ShowMemory.sh v0.58
 # * It shows Free RAM, Used RAM, Total RAM, etc memory size/amount.
 # *************************************************************************
 # *************************************************************************
 #
-# A sample/example Output of "vm_stat" command (on macOSX):
+# A sample/example Output of "vm_stat" command, on macOSX:
 # 01 |Mach Virtual Memory Statistics: (page size of 4096 bytes)
 # 02 |Pages free:                               29349.
 # 03 |Pages active:                            687993.
@@ -55,12 +55,16 @@ pgFileBkdRcvd=0;
 pgCmprsStorRcvd=0;
 pgCmprsrRcvd=0;
 
-while read -u3 -r Ln ; do	
+while read -u3 -r Ln ; do
+	memInLn="${Ln//\ /}";  memInLn="${memInLn#*\:}";  memInLn="${memInLn//\./}";
+	memInLn=$(( ( $memInLn * pgSize ) / 1048576 ));		
+	
 	if [ "$pgSizeRcvd" -eq "0" ] && [[ "$Ln" == *"bytes"* ]] ; then
 		# removing anything before "of " & this word itself ; removing all after " bytes" & this word itself ;
 		pgSize="${Ln#*of\ }";  pgSize="${pgSize%\ bytes*}";
 		pgSizeRcvd=1;
 		# printf "\174 $pgSize \174\n";
+		memInLn="MB";
 	fi;
 	if [ "$pgFreeRcvd" -eq "0" ] && [[ "$Ln" == *"Pages free"* ]] ; then
 		# removing anything before colon & the colon ; removing all spaces ; removing all dots ;
@@ -111,8 +115,7 @@ while read -u3 -r Ln ; do
 		pgCmprsrRcvd=1;
 		totalPhysicalMem=$(( $totalPhysicalMem + $pgCmprsr ));
 	fi;
-	memInLn="${Ln//\ /}";  memInLn="${memInLn#*\:}";  memInLn="${memInLn//\./}";
-	memInLn=$(( ( $memInLn * pgSize ) / 1048576 ));
+
 	if [ "$LnNumbr" -le "9" ] ; then
 		m="0$LnNumbr";
 		# the "\174" is pipe-symbol's value in Octal number.
@@ -122,7 +125,7 @@ while read -u3 -r Ln ; do
 	fi;
 	LnNumbr=$(( $LnNumbr + 1 ));
 done 3< <(/usr/bin/vm_stat);
-# I used "vm_stat", as it appears that, it does not need privileged access to run
+# We used "vm_stat", as it appears that, it does not need privileged access to run
 
 # 1 MegaBytes(MB) = 1048576 Bytes
 echo "Free (Physical/RAM) Memory      : $(( ( $pgFree * $pgSize ) / 1048576 ))";
@@ -130,6 +133,7 @@ echo "Purgeable (Physical/RAM) Memory : $(( ( $pgPurgbl * $pgSize ) / 1048576 ))
 echo "Cached (Physical/RAM) Memory    : $(( ( $pgFileBkd * $pgSize ) / 1048576 ))";
 echo "Used (Physical/RAM) Memory      : $(( (( $pgActv + $pgWirdDn + $pgCmprsr ) * $pgSize ) / 1048576 ))";
 echo "Total (Physical/RAM) Memory     : $(( ( $totalPhysicalMem * $pgSize ) / 1048576 ))";
+
 
 # Below bash command-set will output actual RAM mem size, but this command may need privileged access to run:
 # ramBytes="`sysctl hw.memsize`"; echo "$ramBytes" ; ramBytes="${ramBytes#*\:\ }"; echo "$ramBytes Bytes"; ramMB=$(( $ramBytes / 1048576 )); echo "$ramMB MB"; ramGB=$(( $ramBytes / 1073741824 )); echo "$ramGB GB"; unset ramBytes ramMB ramGB;
