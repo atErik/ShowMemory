@@ -4,7 +4,7 @@
 # *************************************************************************
 # * ShowMemory.sh - ShowMemory - shows Free RAM, Used RAM, Total RAM, etc.
 # * Copyright © 2020 Erik T Ashfolk (<atErïk＠ÖυťĹöōķ·ċōm;atErïk＠AśhFölķ·ćōm>, Do Not Copy 
-# *  Adrs, Type in English/basic-latin char. No Soliciting Permitted). All rights reserved.
+# *  Eml-Adrs, Type in English/basic-latin, No Soliciting Permitted). All rights reserved.
 # * Written initially on 2020-06-24 by Erik T Ashfolk.
 # * Released with below Licenses+Restrictions+Permissions:
 # *  (*) Do Not Use My/Our Contribution(s) To Kill/Harm/Violate(or Steal-from)(Any) Human/Community,Earth,etc.
@@ -65,6 +65,7 @@ while read -u3 -r Ln ; do
 		pgSizeRcvd=1;
 		# printf "\174 $pgSize \174\n";
 		memInLn="MB";
+		Ln="$Ln (KB)";
 	fi;
 	if [ "$pgFreeRcvd" -eq "0" ] && [[ "$Ln" == *"Pages free"* ]] ; then
 		# removing anything before colon & the colon ; removing all spaces ; removing all dots ;
@@ -128,6 +129,7 @@ done 3< <(/usr/bin/vm_stat);
 # We used "vm_stat", as it appears that, it does not need privileged access to run
 
 # 1 MegaBytes(MB) = 1048576 Bytes
+echo "CATEGORY OF MEMORY              : MB (MegaBytes)";
 echo "Free (Physical/RAM) Memory      : $(( ( $pgFree * $pgSize ) / 1048576 ))";
 echo "Purgeable (Physical/RAM) Memory : $(( ( $pgPurgbl * $pgSize ) / 1048576 ))";
 echo "Cached (Physical/RAM) Memory    : $(( ( $pgFileBkd * $pgSize ) / 1048576 ))";
