@@ -1,10 +1,10 @@
 # ShowMemory
-CLI &amp; GUI Tools To Show (Free/Used/Total/etc) Memory Amount/Size (on macOS/macOSX, BSD/Unix, Linux, etc).<br/>
+CLI &amp; GUI Tools To Show (Free/Used/Total/etc) Memory Amount/Size (on macOS/macOSX, BSD/Unix, etc).<br/>
+Later Linux support will be added. Later GUI tool will be added.
 
-
-ShowMemory.sh - ShowMemory - shows Free RAM, Used RAM, Total RAM, etc.<br/>
-Copyright © 2020 Erik T Ashfolk (<atErïk＠ÖυťĹöōķ·ċōm;atErïk＠AśhFölķ·ćōm>, Do Not Copy<br/>
-&#160;Adrs, Type in English/basic-latin char. No Soliciting Permitted). All rights reserved.<br/>
+ShowMemory.sh - ShowMemory - it shows Free RAM, Used RAM, Total RAM, etc memory Size/Amount.<br/>
+Copyright © 2020 Erik T Ashfolk (&lt;at&#69;rïk＠Ö&#965;ťĹö&#333;ķ·ċ&#333;m;at&#69;rïk＠&#65;śh&#70;ölķ·ć&#333;m&gt;, Do Not Copy<br/>
+&#160;&#160;EmlAdrs, Type in English/basic-latin char, No Soliciting Permitted). All rights reserved.<br/>
 Written initially on 2020-06-24 by Erik T Ashfolk.<br/>
 Released with below Licenses+Restrictions+Permissions:<br/>
 &#160;(&#42;) Do Not Use My/Our Contribution(s) To Kill/Harm/Violate(or Steal-from)(Any) Human/Community,Earth,etc.<br/>
@@ -12,14 +12,11 @@ Released with below Licenses+Restrictions+Permissions:<br/>
 
 
 Currently the "<a href="ShowMemory.sh">ShowMemory.sh</a>" 
- script is a bash-shell based, & for macOSX.<br/>
- Later, We will add support for other platform in this script.<br/>
+ script/tool is a bash-shell based, & for macOSX.
 
 
-Script was tested, it Worked.<br/>
-
-
-<div>Tested on:<dl>
+Script/tool was tested, it Worked.<br/>
+<div width="100%">Tested on:<dl>
 <dd>Mac:~ atErik$ uname -a<br/>
  Darwin Mac.local 19.5.0 Darwin Kernel Version 19.5.0: Tue May 26 20:41:44 PDT 2020; root:xnu-6153.121.2~2/RELEASE_X86_64 x86_64<br/>
  Mac:~ atErik$ bash --version<br/>
@@ -32,3 +29,8 @@ Script was tested, it Worked.<br/>
  zsh 5.7.1 (x86_64-apple-darwin19.0)</dd>
 </dl>
 </div>
+
+
+Any executable file needs the "Execute" attribute bit set, & if thats not done already:<br/>
+execute below command:<br/>
+&#160;&#160;chmod&#160;&#160;+x&#160;&#160;ShowMemory.sh
