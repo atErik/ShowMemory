@@ -2,7 +2,7 @@
 A (set of) Tool/Script(s) To Show/Display Free/Used/Total/etc Memory/RAM Amount/Size, on macOS/macOSX, BSD/Unix, etc.<br/>
 Later Linux support will be added. Later GUI tool will be added.
 
-## License
+## License(s):
 ShowMemory.sh - ShowMemory - it shows Free/Used/Total/etc RAM/Memory Size/Amount.<br/>
 Copyright © 2020 Erik T Ashfolk (&lt;at&#69;rïk＠Ö&#965;ťĹö&#333;ķ·ċ&#333;m;at&#69;rïk＠&#65;śh&#70;ölķ·ć&#333;m&gt;, Do Not Copy<br/>
 &#160;&#160;Eml-Adrs, Type in English/basic-latin char, No Soliciting Permitted). All rights reserved.<br/>
@@ -11,7 +11,7 @@ Released with below <b>License(s)</b>+<b>Restrictions</b>+<b>Permissions</b>:<br
 &#160;(&#42;) Do Not Use My/Our Contribution(s) To Kill/Harm/Violate(or Steal-from)(Any) Human/Community,Earth,etc.<br/>
 &#160;(&#42;) GNU General Public License v3 (GPL v3) https://www.GNU.org/licenses/gpl-3.0.en.html<br/>
 
-## Info
+## Info:
 Currently the "<a href="ShowMemory.sh">ShowMemory.sh</a>" 
  is a bash-shell based script/tool, & for macOSX.
 
@@ -33,5 +33,7 @@ Script/tool was tested, it Worked.<br/>
 
 ## How To Use/Run:
 Any executable file needs the "Execute" attribute bit set, & if thats not done already:<br/>
-execute below command:<br/>
+execute below command in CLI "Terminal"/shell:<br/>
 &#160;&#160;chmod&#160;&#160;+x&#160;&#160;ShowMemory.sh
+&#160;&#160;&#46;/ShowMemory&#46;sh<br/>
+&#160;&#160;(above command will show info on screen)<br/>
