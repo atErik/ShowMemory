@@ -16,8 +16,25 @@ Released with below <b>License(s)</b>+<b>Restrictions</b>+<b>Permissions</b>:<br
 &#160;(All other copyright items cited here are the copyright of their respective author/creator&#46;)<br/>
 
 ## Info:
-Currently the "<a href="ShowMemory.sh">ShowMemory.sh</a>" 
- is a bash-shell based script/tool, & for macOSX.
+Currently the "<a href="ShowMemory.sh">ShowMemory.sh</a>" is a bash-shell based script/tool, 
+ & for macOSX.
+
+<div width="100%">I'm/We're now calculating memory size/amount in this way : by getting data 
+ from output of "vm_stat" command, unfortunately its not super accurate now. If you want to 
+ correct me/us/source further, pls don't hesitate to create an "Issue" under this "ShowMemory" 
+ repo/project with your info & link, Thanks in advance. Currently, we're using below specific 
+ data fields from "vm_stat", to get the total for a specific category of memory:<dl>
+<dd> 
+Abbreviations : pg = Page (each page is 4096 bytes) . 1048576 is Bytes in 1MB(MegaBytes) . Purgbl = Purgeable . 
+WirdDn = Wired Down . FileBkd = File-backed . Actv = Active . Cmprsr = Occupied by Compressor .<br/>
+"CATEGORY OF MEMORY		: MB (MegaBytes)"<br/>
+"Free (Physical/RAM) Memory	= ( $pgFree * $pgSize ) / 1048576 "<br/>
+"Purgeable (Physical/RAM) Memory	= ( $pgPurgbl * $pgSize ) / 1048576 "<br/>
+"Cached (Physical/RAM) Memory	= ( $pgFileBkd * $pgSize ) / 1048576 "<br/>
+"Used (Physical/RAM) Memory	= (( $pgActv + $pgWirdDn + $pgCmprsr ) * $pgSize ) / 1048576 "<br/>
+"Total (Physical/RAM) Memory	= ( $totalPhysicalMem * $pgSize ) / 1048576 "</dd>
+</dl>
+</div>
 
 ## Tested-on/Supported Platform(s):
 Script/tool was tested, it Worked.<br/>
@@ -38,6 +55,6 @@ Script/tool was tested, it Worked.<br/>
 ## How To Use/Run:
 Any executable file needs the "Execute" attribute bit set, & if thats not done already:<br/>
 execute below command in CLI "Terminal"/shell:<br/>
-&#160;&#160;chmod&#160;&#160;+x&#160;&#160;ShowMemory.sh
+&#160;&#160;chmod&#160;&#160;+x&#160;&#160;ShowMemory.sh<br/>
 &#160;&#160;&#46;/ShowMemory&#46;sh<br/>
 &#160;&#160;(above command will show memory stat/info on screen)<br/>
